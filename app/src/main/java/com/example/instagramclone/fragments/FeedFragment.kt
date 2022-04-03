@@ -80,6 +80,8 @@ open class FeedFragment : Fragment() {
         query.include(Post.KEY_USER)
         // return posts in descending order: newer posts will appear first
         query.addDescendingOrder("createdAt")
+        // limit to at most 20 posts
+        query.setLimit(20);
         // find all post objects
         query.findInBackground(object: FindCallback<Post> {
             override fun done(posts: MutableList<Post>?, e: ParseException?) {
